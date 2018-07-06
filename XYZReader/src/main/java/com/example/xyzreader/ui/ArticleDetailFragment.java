@@ -104,7 +104,16 @@ public class ArticleDetailFragment extends Fragment implements
         mRootView = inflater.inflate(R.layout.fragment_article_detail, container, false);
 
 
-        mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+        mToolbar = mRootView.findViewById(R.id.article_title);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+        mPhotoView = mRootView.findViewById(R.id.photo);
 
         mRootView.findViewById(R.id.share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +145,6 @@ public class ArticleDetailFragment extends Fragment implements
             return;
         }
 
-        Toolbar titleView = mRootView.findViewById(R.id.article_title);
         TextView bylineView = mRootView.findViewById(R.id.article_byline);
         TextView bodyView = mRootView.findViewById(R.id.article_body);
 
@@ -147,7 +155,7 @@ public class ArticleDetailFragment extends Fragment implements
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
-            titleView.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
+            mToolbar.setTitle(mCursor.getString(ArticleLoader.Query.TITLE));
             Date publishedDate = parsePublishedDate();
             if (!publishedDate.before(START_OF_EPOCH.getTime())) {
                 bylineView.setText(Html.fromHtml(
@@ -185,7 +193,7 @@ public class ArticleDetailFragment extends Fragment implements
                     });
         } else {
             mRootView.setVisibility(View.GONE);
-            titleView.setTitle("N/A");
+            mToolbar.setTitle("N/A");
             bylineView.setText("N/A" );
             bodyView.setText("N/A");
         }
