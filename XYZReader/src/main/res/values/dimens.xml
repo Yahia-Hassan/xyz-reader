@@ -9,5 +9,6 @@
     <dimen name="fab_margin">24dp</dimen>
     <dimen name="app_bar_height">256dp</dimen>
     <dimen name="margin_content">24dp</dimen>
+    <dimen name="app_bar_min_height">56dp</dimen>
 
 </resources>

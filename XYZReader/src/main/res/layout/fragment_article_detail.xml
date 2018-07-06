@@ -27,6 +27,7 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/theme_primary"
+            android:minHeight="@dimen/app_bar_min_height"
             android:theme="@style/Base.Theme.AppCompat"
             app:expandedTitleMarginStart="@dimen/margin_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
@@ -46,11 +47,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
-                android:background="@drawable/image_gradient"/>
+                android:background="@drawable/photo_background_protection"/>
 
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/anim_toolbar"
+                android:id="@+id/article_title"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -73,18 +74,6 @@
 
 
             <TextView
-                android:id="@+id/article_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/textAppearanceLarge"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Article Title" />
-
-
-            <TextView
                 android:id="@+id/article_byline"
                 style="?android:attr/textAppearanceSmall"
                 android:layout_width="wrap_content"
@@ -92,8 +81,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                app:layout_constraintStart_toStartOf="@+id/article_title"
-                app:layout_constraintTop_toBottomOf="@+id/article_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
                 tools:text="Article Byline" />
 
 
@@ -120,18 +109,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/divider"
                 tools:text="Atricle Body" />
 
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/article_body"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:text="Show More"/>
 
         </android.support.constraint.ConstraintLayout>
 
